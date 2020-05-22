@@ -1,14 +1,15 @@
 #pragma once
 
+#include "Board.hpp"
+using namespace WarGame;
 
 class Soldier{
-    public:
+    private:
         int player_number;
         int HP;
         int Commander;
         int activity; //    damage / heal
-
-
+    public:
         //Constructor
         Soldier(int player_number, int HP, int Commander, int activity){
             this->player_number=player_number;
@@ -27,7 +28,7 @@ class Soldier{
             return this->player_number;
         }
 
-        bool get_Commander(){
+        bool IsCommander(){
             if(this->Commander==1){
                 return true;
             }
@@ -37,5 +38,7 @@ class Soldier{
         int get_activity(){
             return this->activity;
         }
+
+        virtual void Action(Board board,int player_number,pair<int,int> location) =0;
 
 };
