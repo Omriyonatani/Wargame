@@ -2,14 +2,15 @@
 
 #include "Board.hpp"
 using namespace WarGame;
+using namespace std;
 
 class Soldier{
-    private:
+        
+    public:
         int player_number;
         int HP;
         int Commander;
         int activity; //    damage / heal
-    public:
         //Constructor
         Soldier(int player_number, int HP, int Commander, int activity){
             this->player_number=player_number;
@@ -39,6 +40,6 @@ class Soldier{
             return this->activity;
         }
 
-        virtual void Action(Board board,int player_number,pair<int,int> location) =0;
+        virtual void Action(vector<vector<Soldier*>>& board,int player_number,pair<int,int> location) =0;
 
 };

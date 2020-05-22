@@ -14,7 +14,7 @@ Soldier*& Board:: operator[](std::pair<int,int> location){
      location.second>=Board::board[0].size()){
         throw new std::logic_error("You are out of the board\n");
     }
-
+    
     return Board::board[location.first][location.second];
 }
 
@@ -71,10 +71,9 @@ void Board:: move(uint player_number, std::pair<int,int> source, MoveDIR directi
         throw new std::logic_error("This soldier is'nt belong to you\n");
     }
 
-    // Soldier* temp=board[source.first][source.second];
     int i=source.first;
     int j=source.second;
-
+    
     if(direction==MoveDIR::Up){
         i+=1;
     }
@@ -96,12 +95,10 @@ void Board:: move(uint player_number, std::pair<int,int> source, MoveDIR directi
     if(board[i][j]!=nullptr){
         throw new std::logic_error("There is a soldier at the direction location\n");
     }
-
+    pair<int,int> location (i,j); 
     board[i][j]=board[source.first][source.second];
     board[source.first][source.second]=nullptr;
-    pair<int,int> location (i,j); 
     board[i][j]->Action(board,player_number,location);
-
 
 }
 

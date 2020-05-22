@@ -13,6 +13,7 @@
 #include <stdexcept>
 #include "Soldier.hpp"
 
+#define uint unsigned int
 
 namespace WarGame {
 

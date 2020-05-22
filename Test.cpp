@@ -20,7 +20,7 @@ TEST_CASE("wqeq"){
     CHECK(board[{7,1}]->get_HP()==100);
 
     CHECK_THROWS(board.move(1,{0,1},Board::MoveDIR::Down));
-
+    CHECK_THROWS(board.move(1,{5,1},Board::MoveDIR::Down));
     board.move(1,{0,1}, Board::MoveDIR::Up);
     CHECK(board[{7,1}]->get_HP()==90);
     CHECK(board.has_soldiers(2)==true);

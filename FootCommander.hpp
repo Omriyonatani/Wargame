@@ -1,7 +1,13 @@
 #include "Soldier.hpp"
 
-class FootCommander:public Soldier{
+class FootCommander:public FootSoldier{
     public:
-        FootCommander(int player_number) : Soldier(/*(player_number)*/ player_number,/*(HP)*/ 150,/*(Commander)*/ 1, /*(activity)*/ 20){}
+        FootCommander(int player_number) : 
+            FootSoldier(player_number){
+                this->HP+=50;
+                this->activity+=10;
+                this->Commander=1;
+            }
+
 
 };
