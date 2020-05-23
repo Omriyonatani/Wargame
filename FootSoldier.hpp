@@ -41,6 +41,7 @@ class FootSoldier:public Soldier{
             if(board[attack.first][attack.second]->HP<=0){
                 board[attack.first][attack.second]=nullptr;
             }
+            
         }
 
         
