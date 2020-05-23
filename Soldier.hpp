@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Board.hpp"
-using namespace WarGame;
+//using namespace WarGame;
 using namespace std;
 
 class Soldier{

@@ -1,3 +1,4 @@
+#pragma once
 #include "Soldier.hpp"
 // #include <stdlib.h>
 #include <cmath>

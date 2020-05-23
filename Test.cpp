@@ -112,13 +112,13 @@ TEST_CASE("There is soldier at the direction step Exception"){
     Board board=demo_board_all();
     board.move(2,{7,7},Board::MoveDIR::Left);
     CHECK_THROWS(board.move(2,{7,7},Board::MoveDIR::Left));
-    CHECK_THROWS(board.move(2,{7,5},Board::MoveDIR::Up);
+    CHECK_THROWS(board.move(2,{7,5},Board::MoveDIR::Up));
     board.move(2,{6,7},Board::MoveDIR::Down);
     CHECK_THROWS(board.move(2,{7,1},Board::MoveDIR::Right));
     CHECK_THROWS(board.move(2,{7,3},Board::MoveDIR::Left));
     CHECK_THROWS(board.move(2,{7,2},Board::MoveDIR::Left));
     CHECK_THROWS(board.move(2,{7,2},Board::MoveDIR::Right));
-    board.move(1,{0.7},Board::MoveDIR::Left);
+    board.move(1,{0,7},Board::MoveDIR::Left);
     CHECK_THROWS(board.move(1,{1,5},Board::MoveDIR::Up));
     CHECK_THROWS(board.move(1,{0,6},Board::MoveDIR::Left));
     board.move(1,{1,2},Board::MoveDIR::Up);
@@ -134,12 +134,12 @@ TEST_CASE("Soldier belong to another player Exception"){
 TEST_CASE("Moves and Actions Test"){
     Board board=demo_board_all();
     board.move(1,{0,1},Board::MoveDIR::Up);//foot attack
-    CHECK((board[{6,2}]->HP==90) || (board[{7,1}]->HP==90));//attack the paramedic or the FootCommander
+    CHECK(((board[{6,2}]->HP==90) || (board[{7,1}]->HP==90)));//attack the paramedic or the FootCommander
     board.move(2,{7,5},Board::MoveDIR::Left);//sniper attack
     CHECK(board[{1,5}]->HP==150);//attack the ParamedicCommander
     board.move(1,{0,3},Board::MoveDIR::Up);//FootCommander attack
-    CHECK(board[{6,2}]->HP==70 || board[{7,3}]->HP==130);//attack the Paramedic or FootCommander
-    CHECK(board[{6,2}]->HP==60 || board[{7,1}]->HP==120);//activate all FootCommander
+    CHECK((board[{6,2}]->HP==70 || board[{7,3}]->HP==130));//attack the Paramedic or FootCommander
+    CHECK((board[{6,2}]->HP==60 || board[{7,1}]->HP==120));//activate all FootCommander
 }
 
 TEST_CASE("After action - check HP to the right soldier-  Test"){
