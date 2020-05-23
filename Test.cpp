@@ -128,6 +128,18 @@ TEST_CASE("There is soldier at the direction step Exception"){
 }
 
 TEST_CASE("Soldier belong to another player Exception"){
+    Board board = demo_board_all();
+    CHECK_THROWS(board.move(1,{7,7},Board::MoveDIR::Left));
+    CHECK_THROWS(board.move(1,{7,7},Board::MoveDIR::Right));
+    CHECK_THROWS(board.move(1,{6,5},Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1,{7,1},Board::MoveDIR::Right));
+    CHECK_THROWS(board.move(1,{7,3},Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1,{6,2},Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1,{5,2},Board::MoveDIR::Left));
+    CHECK_THROWS(board.move(2,{1,5},Board::MoveDIR::Down));
+    CHECK_THROWS(board.move(2,{0,7},Board::MoveDIR::Left));
+    CHECK_THROWS(board.move(2,{0,3},Board::MoveDIR::Left));
+    CHECK_THROWS(board.move(2,{0,1},Board::MoveDIR::Left));
     
 }
 
@@ -144,4 +156,18 @@ TEST_CASE("Moves and Actions Test"){
 
 TEST_CASE("After action - check HP to the right soldier-  Test"){
     
+}
+
+TEST_CASE("Init HP Test"){
+    Board board = demo_board_all();
+    CHECK(board[{0,1}]->HP==100);
+    CHECK(board[{0,3}]->HP==150);
+    CHECK(board[{0,5}]->HP==100);
+    CHECK(board[{0,7}]->HP==120);
+    CHECK(board[{1,2}]->HP==100);
+    CHECK(board[{1,5}]->HP==200);
+    CHECK(board[{7,1}]->HP==100);
+    CHECK(board[{7,3}]->HP==150);
+    CHECK(board[{7,5}]->HP==100);
+    CHECK(board[{7,7}]->HP==120);
 }
