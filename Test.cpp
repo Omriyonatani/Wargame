@@ -44,12 +44,12 @@ Board demo_board_all(){
     board[{1,2}] = new Paramedic(1);
     board[{1,5}] = new ParamedicCommander(1);
 
-    board[{0,1}] = new FootSoldier(2);
-	board[{0,3}] = new FootCommander(2);
-	board[{0,5}] = new Sniper(2);
-    board[{0,7}] = new SniperCommander(2);
-    board[{1,2}] = new Paramedic(2);
-    board[{1,5}] = new ParamedicCommander(2);
+    board[{7,1}] = new FootSoldier(2);
+	board[{7,3}] = new FootCommander(2);
+	board[{7,5}] = new Sniper(2);
+    board[{7,7}] = new SniperCommander(2);
+    board[{6,2}] = new Paramedic(2);
+    board[{6,5}] = new ParamedicCommander(2);
     return board;
 }
 
@@ -109,7 +109,22 @@ TEST_CASE("No soldier in location Exception"){
 }
 
 TEST_CASE("There is soldier at the direction step Exception"){
-    
+    Board board=demo_board_all();
+    board.move(2,{7,7},Board::MoveDIR::Left);
+    CHECK_THROWS(board.move(2,{7,7},Board::MoveDIR::Left));
+    CHECK_THROWS(board.move(2,{7,5},Board::MoveDIR::Up);
+    board.move(2,{6,7},Board::MoveDIR::Down);
+    CHECK_THROWS(board.move(2,{7,1},Board::MoveDIR::Right));
+    CHECK_THROWS(board.move(2,{7,3},Board::MoveDIR::Left));
+    CHECK_THROWS(board.move(2,{7,2},Board::MoveDIR::Left));
+    CHECK_THROWS(board.move(2,{7,2},Board::MoveDIR::Right));
+    board.move(1,{0.7},Board::MoveDIR::Left);
+    CHECK_THROWS(board.move(1,{1,5},Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1,{0,6},Board::MoveDIR::Left));
+    board.move(1,{1,2},Board::MoveDIR::Up);
+    CHECK_THROWS(board.move(1,{0,3},Board::MoveDIR::Left));
+    CHECK_THROWS(board.move(1,{0,1},Board::MoveDIR::Right));
+
 }
 
 TEST_CASE("Soldier belong to another player Exception"){
