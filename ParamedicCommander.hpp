@@ -12,6 +12,7 @@ class ParamedicCommander:public Paramedic{
                 this->HP+=100;
                 this->activity+=100;
                 this->Commander=1;
+                set_max_hp(200);
             }
 
         void Action(vector<vector<Soldier*>>& board,int player_number,pair<int,int> location){

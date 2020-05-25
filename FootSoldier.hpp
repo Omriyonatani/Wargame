@@ -32,7 +32,9 @@ class FootSoldier:public Soldier{
 
         //constructor
         FootSoldier(int player_number) : 
-            Soldier(player_number,100,0,10,1){}
+            Soldier(player_number,100,0,10,Type::Foot){
+                set_max_hp(100);
+            }
 
         //action
         void Action(vector<vector<Soldier*>>& board,int player_number,pair<int,int> location){

@@ -8,7 +8,9 @@ class Sniper:public Soldier{
     public:
         //constructor
         Sniper(int player_number) : 
-            Soldier(player_number,100,0,50,2){}
+            Soldier(player_number,100,0,50,Type::Sniper){
+                set_max_hp(100);
+            }
 
         void Action(vector<vector<Soldier*>>& board,int player_number,pair<int,int> location){
             

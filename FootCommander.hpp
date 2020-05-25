@@ -11,6 +11,7 @@ class FootCommander:public FootSoldier{
                     this->HP+=50;
                     this->activity+=10;
                     this->Commander=1;
+                    set_max_hp(150);
             }
 
         // Commander attack makes all this type Soldier attack.

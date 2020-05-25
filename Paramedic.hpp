@@ -8,7 +8,9 @@ class Paramedic:public Soldier{
 
     public:
         Paramedic(int player_number):
-            Soldier(player_number,100,0,50,3){}
+            Soldier(player_number,100,0,50,Type::Paramedic){
+                set_max_hp(100);
+            }
 
         void Action(vector<vector<Soldier*>>& board,int player_number,pair<int,int> location){
             int i=location.first;

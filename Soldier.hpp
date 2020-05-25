@@ -5,21 +5,26 @@
 using namespace std;
 
 class Soldier{
-        
+    private:
+        int max_hp; //max hp for soldier type 
+      
     public:
+        enum Type{Foot,Sniper,Paramedic};
         int player_number;  // team 1/2.
         int HP;
         int Commander; //  bool-    0 false,   1 true.
-        int activity; //    damage / heal.
-        int typeTag;  //  0 = Soldier,   1 = Foot,   2 = Sniper,   3 = Paramedic.
+        int activity;//damage / heal
+        Type type; //soldier type
+              
 
         //Constructor
-        Soldier(int player_number, int HP, int Commander, int activity, int typeTag){
+        Soldier(int player_number, int HP, int Commander, int activity, Type type){
             this->player_number=player_number;
             this->HP=HP;
             this->Commander=Commander;
             this->activity=activity;
-            this->typeTag=0;
+            this->type=type;
+            // this->max_hp=max_hp;
         }
 
 
@@ -43,8 +48,15 @@ class Soldier{
             return this->activity;
         }
 
-        int get_typeTag(){
-            return this->typeTag;
+        virtual int get_max_hp() = 0;
+
+        Type get_typeTag(){
+            return this->type;
+        }
+
+        //Setter
+        void set_max_hp(int hp){
+            this->max_hp=hp;
         }
 
         virtual void Action(vector<vector<Soldier*>>& board,int player_number,pair<int,int> location) =0;

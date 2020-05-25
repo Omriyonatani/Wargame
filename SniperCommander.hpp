@@ -12,6 +12,7 @@ class SniperCommander:public Sniper{
                 this->HP+=20;
                 this->activity+=100;
                 this->Commander=1;
+                set_max_hp(120);
             }
         
         void Action(vector<vector<Soldier*>>& board,int player_number,pair<int,int> location){

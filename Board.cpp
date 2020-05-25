@@ -1,5 +1,7 @@
 #include "Board.hpp"
 #include "Soldier.hpp"
+#include "FootSoldier.hpp"
+#include "FootCommander.hpp"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -100,5 +102,20 @@ void Board:: move(uint player_number, std::pair<int,int> source, MoveDIR directi
     board[source.first][source.second]=nullptr;
     board[i][j]->Action(board,player_number,location);
 
+}
+
+int main(){
+    Board board(8,8);
+    board[{0,1}] = new FootSoldier(1);
+	board[{0,3}] = new FootCommander(1);
+	board[{0,5}] = new FootSoldier(1);
+
+    board[{7,1}] = new FootSoldier(2);
+	board[{7,3}] = new FootCommander(2);
+	board[{7,5}] = new FootSoldier(2);
+    board.move(1,{0,1},Board::MoveDIR::Up);
+    cout<<(board[{0,1}]==nullptr)<<endl;
+    cout<<board[{7,1}]->HP<<endl;
+    return 0;
 }
 
