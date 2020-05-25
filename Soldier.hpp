@@ -48,7 +48,9 @@ class Soldier{
             return this->activity;
         }
 
-        virtual int get_max_hp() = 0;
+        int get_max_hp(){
+            return this->max_hp;
+        };
 
         Type get_typeTag(){
             return this->type;

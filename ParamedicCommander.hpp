@@ -205,7 +205,7 @@ class ParamedicCommander:public Paramedic{
             // heal for every Paramedic that not Commander.
             for (int i=0; i<board.size(); i++){
                 for(int j=0; j<board[0].size(); j++){
-                    if(board[i][j] != nullptr && board[i][j]->get_player_number() == this->player_number && board[i][j]->get_typeTag() == this->typeTag && board[i][j]->IsCommander()==0){
+                    if(board[i][j] != nullptr && board[i][j]->get_player_number() == this->player_number && board[i][j]->get_typeTag() == type && board[i][j]->IsCommander()==0){
                         board[i][j]->Action(board,player_number,location);
                     }
                 }

@@ -85,7 +85,7 @@ void Board:: move(uint player_number, std::pair<int,int> source, MoveDIR directi
     else if(direction==MoveDIR::Right){
         j-=1;
     }
-    else{
+    else if(direction==MoveDIR::Left){
         j+=1;
     }
 
@@ -104,18 +104,18 @@ void Board:: move(uint player_number, std::pair<int,int> source, MoveDIR directi
 
 }
 
-int main(){
-    Board board(8,8);
-    board[{0,1}] = new FootSoldier(1);
-	board[{0,3}] = new FootCommander(1);
-	board[{0,5}] = new FootSoldier(1);
-
-    board[{7,1}] = new FootSoldier(2);
-	board[{7,3}] = new FootCommander(2);
-	board[{7,5}] = new FootSoldier(2);
-    board.move(1,{0,1},Board::MoveDIR::Up);
-    cout<<(board[{0,1}]==nullptr)<<endl;
-    cout<<board[{7,1}]->HP<<endl;
-    return 0;
-}
+//int main(){
+//    Board board(8,8);
+//    board[{0,1}] = new FootSoldier(1);
+//	board[{0,3}] = new FootCommander(1);
+//	board[{0,5}] = new FootSoldier(1);
+//
+//    board[{7,1}] = new FootSoldier(2);
+//	board[{7,3}] = new FootCommander(2);
+//	board[{7,5}] = new FootSoldier(2);
+//    board.move(1,{0,1},Board::MoveDIR::Up);
+//    cout<<(board[{0,1}]==nullptr)<<endl;
+//    cout<<board[{7,1}]->HP<<endl;
+//    return 0;
+//}
 

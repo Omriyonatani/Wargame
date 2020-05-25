@@ -152,13 +152,13 @@ TEST_CASE("Moves and Actions Test"){
     board.move(2,{7,5},Board::MoveDIR::Left);//sniper attack
     CHECK(board[{1,5}]->HP==150);//sniper attack the ParamedicCommander
     board.move(1,{0,3},Board::MoveDIR::Up);//FootCommander attack
-    CHECK((board[{6,2}]->HP==70) || (board[{7,3}]->HP==130));//FootCommander attack the Paramedic or FootCommander
-    CHECK((board[{6,2}]->HP==60) || (board[{7,1}]->HP==120));//All other FootSoldiers attack
+    CHECK(((board[{6,2}]->HP==70) || (board[{7,3}]->HP==130)));//FootCommander attack the Paramedic or FootCommander
+    CHECK(((board[{6,2}]->HP==60) || (board[{7,1}]->HP==120)));//All other FootSoldiers attack
     board.move(2,{6,2},Board::MoveDIR::Right);//paramedic heal FootSoldier
     CHECK(board[{7,1}]->HP==100);//FootCommander's life now full
     board.move(1,{0,7},Board::MoveDIR::Up);//SniperCommander attack
     CHECK(board[{6,5}]->HP==100);//SniperCommander attack the ParamedicCommander
-    CHECK((board[{7,3}]->HP==80) ||(board[{7,1}]->HP==70));//All other snipers attack
+    CHECK(((board[{7,3}]->HP==80) ||(board[{7,1}]->HP==70)));//All other snipers attack
     board.move(2,{7,3},Board::MoveDIR::Down);//FootCommander attack
     CHECK(board[{1,3}]->HP==130);//FootCommander attack the FootCommander
     CHECK(board[{1,1}]->HP==90);//All other FootSoldiers attack
