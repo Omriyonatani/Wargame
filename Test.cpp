@@ -181,3 +181,63 @@ TEST_CASE("Init HP Test"){
     CHECK(board[{7,5}]->HP==100);
     CHECK(board[{7,7}]->HP==120);
 }
+
+TEST_CASE("demo_board_all General Tests"){
+    Board board = demo_board_all();
+    CHECK_THROWS(board.move(1,{0,5},Board::MoveDIR::Up));
+    CHECK(board[{0,5}]->HP==100);
+    CHECK_THROWS(board.move(1,{1,5},Board::MoveDIR::Down));
+    CHECK(board[{1,5}]->HP==200);
+    CHECK(board[{6,5}]->HP==200);
+    board.move(1,{0,5},Board::MoveDIR::Right);
+    CHECK(board[{6,5}]->HP==100);
+    board.move(2,{7,1},Board::MoveDIR::Down);
+    CHECK(board[{0,1}]->HP==90);
+    board.move(1,{0,1},Board::MoveDIR::Up);
+    CHECK(board[{6,1}]->HP==90);
+    board.move(2,{6,1},Board::MoveDIR::Up);
+    board.move(2,{7,1},Board::MoveDIR::Down);
+    CHECK(board[{1,1}]->HP==70);
+    board.move(1,{1,1},Board::MoveDIR::Up);
+    CHECK(board[{6,1}]->HP==80);
+    board.move(1,{0,1},Board::MoveDIR::Down);
+    CHECK(board[{6,1}]->HP==70);
+    board.move(1,{1,1},Board::MoveDIR::Up);
+    CHECK(board[{6,1}]->HP==60);
+    board.move(1,{0,1},Board::MoveDIR::Down);
+    CHECK(board[{6,1}]->HP==50);
+    board.move(1,{1,1},Board::MoveDIR::Up);
+    CHECK(board[{6,1}]->HP==40);
+    board.move(1,{0,1},Board::MoveDIR::Down);
+    CHECK(board[{6,1}]->HP==30);
+    board.move(1,{1,1},Board::MoveDIR::Up);
+    CHECK(board[{6,1}]->HP==20);
+    board.move(1,{0,1},Board::MoveDIR::Down);
+    CHECK(board[{6,1}]->HP==10);
+    board.move(1,{1,1},Board::MoveDIR::Up);
+    CHECK(board[{6,1}]==nullptr);// die
+    board.move(1,{1,2},Board::MoveDIR::Down);
+    CHECK(board[{0,1}]->HP==100);
+}
+
+TEST_CASE("demo_board_sniper General Tests"){
+    Board board = demo_board_all();
+    board.move(1,{0,5},Board::MoveDIR::Up);
+    CHECK(board[{7,1}]->HP==50);
+    CHECK(board[{7,3}]->HP==50);
+    CHECK(board[{7,5}]->HP==20);
+    board.move(1,{1,5},Board::MoveDIR::Down);
+    CHECK(board[{7,1}]==nullptr);
+    CHECK(board[{7,3}]==nullptr);
+    CHECK(board[{7,5}]==nullptr);
+
+    Board board2 = demo_board_all();
+    board.move(2,{7,5},Board::MoveDIR::Down);
+    CHECK(board[{0,1}]->HP==50);
+    CHECK(board[{0,3}]->HP==50);
+    CHECK(board[{0,5}]->HP==20);
+    board.move(2,{6,5},Board::MoveDIR::Up);
+    CHECK(board[{0,1}]==nullptr);
+    CHECK(board[{0,3}]==nullptr);
+    CHECK(board[{0,5}]==nullptr);
+}
