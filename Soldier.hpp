@@ -57,6 +57,7 @@ class Soldier{
         }
 
         //Setter
+
         void set_max_hp(int hp){
             this->max_hp=hp;
         }

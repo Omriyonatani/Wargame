@@ -61,7 +61,7 @@ void Board:: move(uint player_number, std::pair<int,int> source, MoveDIR directi
     }
     //the location is out of the board
     if(source.first>=Board::board.size() ||
-     source.second>=Board::board[0].size()){
+     source.second>=Board::board[0].size() || source.first<0 || source.second<0){
         throw new std::logic_error("Your source location are out of the board\n");
     }
     //in this location there is no soldier
@@ -82,15 +82,26 @@ void Board:: move(uint player_number, std::pair<int,int> source, MoveDIR directi
     else if(direction==MoveDIR::Down){
         i-=1;
     }
-    else if(direction==MoveDIR::Right){
-        j-=1;
+    if(player_number==1){
+        if(direction==MoveDIR::Right){
+            j-=1;
+        }
+        else if(direction==MoveDIR::Left){
+            j+=1;
+        }
     }
-    else if(direction==MoveDIR::Left){
-        j+=1;
+    else{
+        if(direction==MoveDIR::Right){
+            j+=1;
+        }
+        else if(direction==MoveDIR::Left){
+            j-=1;
+            cout<<j<<endl;
+        }
     }
 
     //the direction location is out of the board
-    if(i>=board.size() || j>=board[0].size()){
+    if(i>=board.size() || j>=board[0].size() || i<0 || j<0){
         throw new std::logic_error("Your direction location is out of the board\n");
     }
     //at the direction location there is a soldier
