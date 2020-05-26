@@ -7,6 +7,7 @@
 #include "Paramedic.hpp"
 #include "ParamedicCommander.hpp"
 #include <complex>
+#include <iostream>
 
 using namespace std;
 using namespace WarGame;
@@ -78,19 +79,20 @@ TEST_CASE("Location out of board Exception"){
     Board board=demo_board_foot();
     CHECK_THROWS(board.move(1,{0,8},Board::MoveDIR::Down));
     board.move(1,{0,1},Board::MoveDIR::Right);
-    CHECK_THROWS(board.move(1,{0,1},Board::MoveDIR::Right));
+    CHECK_THROWS(board.move(1,{0,0},Board::MoveDIR::Right));
     CHECK_THROWS(board.move(2,{7,1},Board::MoveDIR::Up));
+    board.move(1,{0,5},Board::MoveDIR:: Up);
 
     for(int i=0;i<4;i++){
-        board.move(1,{0,3},Board::MoveDIR::Left);
+        board.move(1,{0,3+i},Board::MoveDIR::Left);
     }
-    CHECK_THROWS(board.move(1,{0,3},Board::MoveDIR::Left));
+    CHECK_THROWS(board.move(1,{0,7},Board::MoveDIR::Left));
 
     CHECK_THROWS(board.move(2,{7,3},Board::MoveDIR::Up));
     CHECK_THROWS(board.move(2,{7,5},Board::MoveDIR::Up));
 
     board.move(2,{7,1},Board::MoveDIR::Down);
-    board.move(2,{7,1},Board::MoveDIR::Up);
+    board.move(2,{6,1},Board::MoveDIR::Up);
     CHECK_THROWS(board.move(2,{7,1},Board::MoveDIR::Up));
 
 }
@@ -104,8 +106,10 @@ TEST_CASE("No soldier in location Exception"){
     CHECK_THROWS(board.move(1,{1,2},Board::MoveDIR::Up));
     board.move(2,{7,1},Board::MoveDIR::Down);
     CHECK_THROWS(board.move(2,{7,1},Board::MoveDIR::Down));
-    board.move(2,{6,5},Board::MoveDIR::Left);
-    CHECK_THROWS(board.move(2,{6,5},Board::MoveDIR::Down));
+
+    // board.move(2,{6,5},Board::MoveDIR::Left);
+    // CHECK_THROWS(board.move(2,{6,5},Board::MoveDIR::Down));
+
     board.move(2,{6,2},Board::MoveDIR::Down);
     CHECK_THROWS(board.move(2,{6,2},Board::MoveDIR::Down));
 }
@@ -113,19 +117,30 @@ TEST_CASE("No soldier in location Exception"){
 TEST_CASE("There is soldier at the direction step Exception"){
     Board board=demo_board_all();
     board.move(2,{7,7},Board::MoveDIR::Left);
-    CHECK_THROWS(board.move(2,{7,7},Board::MoveDIR::Left));
-    CHECK_THROWS(board.move(2,{7,5},Board::MoveDIR::Up));
-    board.move(2,{6,7},Board::MoveDIR::Down);
-    CHECK_THROWS(board.move(2,{7,1},Board::MoveDIR::Right));
-    CHECK_THROWS(board.move(2,{7,3},Board::MoveDIR::Left));
+    CHECK_THROWS(board.move(2,{7,6},Board::MoveDIR::Left));
+
+    board.move(2,{7,3},Board::MoveDIR::Left);
     CHECK_THROWS(board.move(2,{7,2},Board::MoveDIR::Left));
-    CHECK_THROWS(board.move(2,{7,2},Board::MoveDIR::Right));
-    board.move(1,{0,7},Board::MoveDIR::Left);
-    CHECK_THROWS(board.move(1,{1,5},Board::MoveDIR::Up));
-    CHECK_THROWS(board.move(1,{0,6},Board::MoveDIR::Left));
-    board.move(1,{1,2},Board::MoveDIR::Up);
-    CHECK_THROWS(board.move(1,{0,3},Board::MoveDIR::Left));
-    CHECK_THROWS(board.move(1,{0,1},Board::MoveDIR::Right));
+
+    board.move(2,{7,1},Board::MoveDIR::Down);
+    CHECK_THROWS(board.move(2,{6,1},Board::MoveDIR::Right));
+
+    board.move(1,{0,1},Board::MoveDIR::Up);
+    CHECK_THROWS(board.move(1,{1,1},Board::MoveDIR::Left));
+
+    board.move(1,{0,3},Board::MoveDIR::Up);
+    CHECK_THROWS(board.move(1,{1,3},Board::MoveDIR::Right));
+
+    CHECK_THROWS(board.move(1,{1,2},Board::MoveDIR::Left));
+    CHECK_THROWS(board.move(1,{1,2},Board::MoveDIR::Right));
+
+    board.move(1,{0,7},Board::MoveDIR::Right);
+    CHECK_THROWS(board.move(1,{0,6},Board::MoveDIR::Right));
+
+    CHECK_THROWS(board.move(1,{0,5},Board::MoveDIR::Left));
+
+    CHECK_THROWS(board.move(1,{6,2},Board::MoveDIR::Left));
+    CHECK_THROWS(board.move(1,{6,2},Board::MoveDIR::Up));
 
 }
 
