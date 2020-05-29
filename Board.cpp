@@ -43,6 +43,19 @@ bool Board:: has_soldiers(uint player_number) const{
     return false;
 }
 
+std::vector<Soldier*> Board::get_soldiers(uint player_number,Soldier::Type t) const{
+    std::vector<Soldier*> soldiers;
+    for(int i=0;i<board.size();i++){
+        for(int j=0;j<board[0].size();j++){
+            if(board[i][j]!=nullptr&&
+            board[i][j]->get_player_number()==player_number && board[i][j]->get_typeTag()==t && board[i][j]->IsCommander()==false){
+                soldiers.push_back(board[i][j]);
+            }
+        }
+    }
+    return soldiers;
+}
+
 // The function "move" tries to move the soldier of player "player"
     //     from the "source" location to the "target" location,
     //     and activates the special ability of the soldier.
@@ -115,18 +128,29 @@ void Board:: move(uint player_number, std::pair<int,int> source, MoveDIR directi
 
 }
 
-//int main(){
+// int main(){
 //    Board board(8,8);
 //    board[{0,1}] = new FootSoldier(1);
-//	board[{0,3}] = new FootCommander(1);
-//	board[{0,5}] = new FootSoldier(1);
-//
+// 	board[{0,3}] = new FootCommander(1);
+// 	board[{0,5}] = new FootSoldier(1);
+
 //    board[{7,1}] = new FootSoldier(2);
-//	board[{7,3}] = new FootCommander(2);
-//	board[{7,5}] = new FootSoldier(2);
-//    board.move(1,{0,1},Board::MoveDIR::Up);
-//    cout<<(board[{0,1}]==nullptr)<<endl;
-//    cout<<board[{7,1}]->HP<<endl;
-//    return 0;
-//}
+// 	board[{7,3}] = new FootCommander(2);
+// 	board[{7,5}] = new FootSoldier(2);
+
+//     board.move(2,{7,3},WarGame::Board::MoveDIR::Down);
+//     board.move(2,{6,3},WarGame::Board::MoveDIR::Down);
+//     board.move(2,{5,3},WarGame::Board::MoveDIR::Down);
+//     board.move(2,{4,3},WarGame::Board::MoveDIR::Down);
+//     // board.move(2,{7,3},WarGame::Board::MoveDIR::Down);
+//     std::vector<Soldier*> soldiers=board.get_soldiers(1,Soldier::Type::Foot);
+//     cout<<"size:"<<soldiers.size()<<endl;
+//     for(int i=0;i<soldiers.size();i++){
+//         cout<<"Commander:"<<soldiers[i]->Commander<<" soldier hp:"<<soldiers[i]->HP<<endl;
+//     }
+
+//     cout<<board[{0,3}]->HP<<endl;
+
+   return 0;
+}
 
