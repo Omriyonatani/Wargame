@@ -31,7 +31,7 @@ class FootSoldier:public Soldier{
                     }
                 }
             }
-            cout<<"location "<<location.first<<","<<location.second<<"attack location "<<closest.first<<","<<closest.second<<endl;
+            cout<<"location "<<location.first<<","<<location.second<<" attack location "<<closest.first<<","<<closest.second<<endl;
             return closest;
         }
 

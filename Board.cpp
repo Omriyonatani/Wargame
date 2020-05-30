@@ -150,7 +150,7 @@ void Board:: move(uint player_number, std::pair<int,int> source, MoveDIR directi
 //     }
 
 //     cout<<board[{0,3}]->HP<<endl;
-
-   return 0;
-}
+//
+//   return 0;
+//}
 

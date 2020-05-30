@@ -20,7 +20,6 @@ class FootCommander:public FootSoldier{
             this->FootSoldier::Action(board,player_number,location);
 
             // attack for every FootSoldier that not Commander.
-
             for (int i=0; i<board.size(); i++){
                 for(int j=0; j<board[0].size(); j++){
                     if(board[i][j] != nullptr && board[i][j]->get_player_number() == this->player_number && board[i][j]->get_typeTag() == type && board[i][j]->IsCommander()==false){
