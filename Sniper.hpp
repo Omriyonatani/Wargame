@@ -7,7 +7,7 @@ using namespace std;
 class Sniper:public Soldier{
     public:
     pair<int,int> search_strongest_soldier(vector<vector<Soldier*>>& board,pair<int,int> location)const{
-        int d=0;
+        int d = 0;
         pair<int,int> strongest {0,0};
         for(int i=0;i<board.size();i++){
             for(int j=0;j<board[0].size();j++){
