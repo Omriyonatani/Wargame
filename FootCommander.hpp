@@ -6,13 +6,17 @@ using namespace std;
 
 class FootCommander:public FootSoldier{
     public:
-        FootCommander(int player_number) : 
+        FootCommander(int player_number) :
             FootSoldier(player_number){
                     this->HP+=50;
                     this->activity+=10;
                     this->Commander=1;
                     set_max_hp(150);
             }
+        ~FootCommander(){
+            cout<<"FootCommander destructor"<<endl;
+        }
+
 
         // Commander attack makes all this type Soldier attack.
         void Action(vector<vector<Soldier*>>& board,int player_number,pair<int,int> location){

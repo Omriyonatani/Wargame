@@ -33,6 +33,10 @@ class Sniper:public Soldier{
                 set_max_hp(100);
             }
 
+
+        ~Sniper(){
+            cout<<"Sniper destructor"<<endl;
+        }
         void Action(vector<vector<Soldier*>>& board,int player_number,pair<int,int> location){
             pair<int,int> attack=search_strongest_soldier(board,location);
 

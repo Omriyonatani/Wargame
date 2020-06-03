@@ -15,6 +15,10 @@ class ParamedicCommander:public Paramedic{
                 set_max_hp(200);
             }
 
+        ~ParamedicCommander(){
+            cout<<"ParamedicCommander destructor"<<endl;
+        }
+
         void Action(vector<vector<Soldier*>>& board,int player_number,pair<int,int> location){
             int i=location.first;
             int j=location.second;

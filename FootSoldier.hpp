@@ -4,6 +4,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
+#include <cmath>
 #define INF 1000000
 using namespace std;
 
@@ -18,14 +19,13 @@ class FootSoldier:public Soldier{
                         continue;
                     }
                     if(board[i][j]!=nullptr && board[i][j]->get_player_number()!=this->player_number){
-                        int t1=fabs(location.first-i);
-                        int t2=fabs(location.second-j);
+                        int distance=(sqrt(pow((i-location.first),2)+pow((j-location.second),2)));
                         if(d==INF){
-                            d=t1+t2;
+                            d=distance;
                             closest = {i,j};
                         }
-                        else if(d>t1+t2){
-                            d=t1+t2;
+                        else if(d>distance){
+                            d=distance;
                             closest = {i,j};
                         }
                     }
@@ -40,6 +40,10 @@ class FootSoldier:public Soldier{
             Soldier(player_number,100,0,10,Type::Foot){
                 set_max_hp(100);
             }
+
+        ~FootSoldier(){
+            cout<<"FootSoldier destructor"<<endl;
+        }
 
         //action
         void Action(vector<vector<Soldier*>>& board,int player_number,pair<int,int> location){

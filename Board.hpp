@@ -12,6 +12,7 @@
 #include <vector>
 #include <stdexcept>
 #include "Soldier.hpp"
+#include <iostream>
 
 #define uint unsigned int
 
@@ -26,6 +27,10 @@ class Board {
     
     Board(uint numRows, uint numCols) : 
       board(numRows, std::vector<Soldier*>(numCols, nullptr)) {}
+
+     ~Board(){
+        cout<<"Board destructor"<<endl;
+    }
 
     // operator for putting soldiers on the game-board during initialization.
     Soldier*& operator[](std::pair<int,int> location);

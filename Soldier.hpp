@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Board.hpp"
+#include <iostream>
+
 //using namespace WarGame;
 using namespace std;
 
@@ -25,6 +27,10 @@ class Soldier{
             this->activity=activity;
             this->type=type;
             // this->max_hp=max_hp;
+        }
+
+        virtual ~Soldier(){
+            cout<<"Soldier destructor"<<endl;
         }
 
 

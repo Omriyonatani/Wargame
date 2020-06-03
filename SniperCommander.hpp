@@ -14,7 +14,10 @@ class SniperCommander:public Sniper{
                 this->Commander=1;
                 set_max_hp(120);
             }
-        
+
+        ~SniperCommander(){
+            cout<<"SniperCommander destructor"<<endl;
+        }
         void Action(vector<vector<Soldier*>>& board,int player_number,pair<int,int> location){
             // my attack
             this->Sniper::Action(board,player_number,location);
