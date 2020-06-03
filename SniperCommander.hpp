@@ -10,7 +10,7 @@ class SniperCommander:public Sniper{
         SniperCommander(int player_number) : 
             Sniper(player_number){
                 this->HP+=20;
-                this->activity+=100;
+                this->activity+=50;
                 this->Commander=1;
                 set_max_hp(120);
             }
