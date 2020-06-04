@@ -139,23 +139,6 @@ void Board:: move(uint player_number, std::pair<int,int> source, MoveDIR directi
 
 }
 
-WarGame::Board fillCommBoard(){
-    WarGame::Board p (5,5);
-    p[{0,0}] = new FootSoldier(1);
-    p[{0,1}] = new FootSoldier(2);
-    p[{0,3}] = new SniperCommander(2);
-    p[{0,4}] = new FootCommander(2);
-    p[{2,0}] = new Paramedic(2);
-    p[{2,1}] = new Paramedic(1);
-    p[{2,2}] = new FootCommander(1);
-    p[{2,3}] = new SniperCommander(1);
-    p[{4,0}] = new Sniper(1);
-    p[{4,1}] = new Sniper(2);
-    p[{4,3}] = new ParamedicCommander(1);
-    p[{4,4}] = new ParamedicCommander(2);
-    return p;
-}
-
 // int main(){
 //       WarGame::Board p = fillCommBoard();
 //     p.move(1,{2,2},WarGame::Board::Up);

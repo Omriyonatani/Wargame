@@ -144,8 +144,8 @@ TEST_CASE("Move Function - Commander"){
 
 
     p.move(2,{4,4},WarGame::Board::Down);
-//             CHECK(p[{4,4}]==nullptr);
-//             CHECK(typeid(*p[{3,4}])==typeid(ParamedicCommander));
+            CHECK(p[{4,4}]==nullptr);
+            CHECK(typeid(*p[{3,4}])==typeid(ParamedicCommander));
 }
 
 TEST_CASE("Exceptions") {
