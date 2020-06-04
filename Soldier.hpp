@@ -30,7 +30,6 @@ class Soldier{
         }
 
         virtual ~Soldier(){
-            cout<<"Soldier destructor"<<endl;
         }
 
 

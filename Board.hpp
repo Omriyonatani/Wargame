@@ -29,7 +29,6 @@ class Board {
       board(numRows, std::vector<Soldier*>(numCols, nullptr)) {}
 
      ~Board(){
-        cout<<"Board destructor"<<endl;
     }
 
     // operator for putting soldiers on the game-board during initialization.

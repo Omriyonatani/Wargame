@@ -14,7 +14,6 @@ class FootCommander:public FootSoldier{
                     set_max_hp(150);
             }
         ~FootCommander(){
-            cout<<"FootCommander destructor"<<endl;
         }
 
 

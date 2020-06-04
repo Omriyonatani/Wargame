@@ -106,22 +106,11 @@ void Board:: move(uint player_number, std::pair<int,int> source, MoveDIR directi
     else if(direction==MoveDIR::Down){
         i-=1;
     }
-    if(player_number==1){
-        if(direction==MoveDIR::Right){
-            j-=1;
-        }
-        else if(direction==MoveDIR::Left){
+    else if(direction==MoveDIR::Right){
             j+=1;
-        }
     }
-    else{
-        if(direction==MoveDIR::Right){
-            j+=1;
-        }
-        else if(direction==MoveDIR::Left){
+    else {
             j-=1;
-            cout<<j<<endl;
-        }
     }
 
     //the direction location is out of the board

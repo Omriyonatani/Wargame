@@ -27,7 +27,6 @@ class Sniper:public Soldier{
                 }
             }
         }
-        cout<<"location "<<location.first<<","<<location.second<<"attack location "<<strongest.first<<","<<strongest.second<<endl;
         return strongest;
     }
 

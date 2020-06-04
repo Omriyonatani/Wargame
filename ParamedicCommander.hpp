@@ -16,7 +16,6 @@ class ParamedicCommander:public Paramedic{
             }
 
         ~ParamedicCommander(){
-            cout<<"ParamedicCommander destructor"<<endl;
         }
 
         void Action(vector<vector<Soldier*>>& board,int player_number,pair<int,int> location){
