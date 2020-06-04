@@ -7,7 +7,7 @@ using namespace std;
 class Sniper:public Soldier{
     public:
     pair<int,int> search_strongest_soldier(vector<vector<Soldier*>>& board,pair<int,int> location)const{
-        int d = 0;
+        int maxhp = 0;
         pair<int,int> strongest {0,0};
         for(int i=0;i<board.size();i++){
             for(int j=0;j<board[0].size();j++){
@@ -16,8 +16,12 @@ class Sniper:public Soldier{
                 }
                 if(board[i][j]!=nullptr && board[i][j]->get_player_number()!=this->player_number){
                     int t1=board[i][j]->get_HP();
-                    if(t1>d){
-                        d=t1;
+                    if(maxhp==0){
+                        maxhp=t1;
+                        strongest = {i,j};
+                    }
+                    if(t1>maxhp){
+                        maxhp=t1;
                         strongest = {i,j};
                     }
                 }
