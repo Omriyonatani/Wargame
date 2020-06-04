@@ -139,31 +139,35 @@ void Board:: move(uint player_number, std::pair<int,int> source, MoveDIR directi
 
 }
 
-int main(){
-      WarGame::Board p = fillCommBoard();
-    p.move(1,{2,2},WarGame::Board::Up);
-            CHECK(p[{2,2}]==nullptr);
-            CHECK(typeid(*p[{3,2}])== typeid(FootCommander));
-
-    p.move(1,{2,3},WarGame::Board::Down);
-            CHECK(p[{2,3}]==nullptr);
-            CHECK(typeid(*p[{1,3}])==typeid(SniperCommander));
-
-
-    p.move(1,{4,3},WarGame::Board::Down);
-            CHECK(p[{4,3}]==nullptr);
-            CHECK(typeid(*p[{3,3}])==typeid(ParamedicCommander));
-
-
-    p.move(2,{0,4},WarGame::Board::Up);
-            CHECK(p[{0,4}]==nullptr);
-            CHECK(typeid(*p[{1,4}])== typeid(FootCommander));
-
-    p.move(2,{0,3},WarGame::Board::Left);
-            CHECK(p[{0,3}]==nullptr);
-            CHECK(typeid(*p[{0,2}])==typeid(SniperCommander));
-
-
-    p.move(2,{4,4},WarGame::Board::Down);
+WarGame::Board fillCommBoard(){
+    WarGame::Board p (5,5);
+    p[{0,0}] = new FootSoldier(1);
+    p[{0,1}] = new FootSoldier(2);
+    p[{0,3}] = new SniperCommander(2);
+    p[{0,4}] = new FootCommander(2);
+    p[{2,0}] = new Paramedic(2);
+    p[{2,1}] = new Paramedic(1);
+    p[{2,2}] = new FootCommander(1);
+    p[{2,3}] = new SniperCommander(1);
+    p[{4,0}] = new Sniper(1);
+    p[{4,1}] = new Sniper(2);
+    p[{4,3}] = new ParamedicCommander(1);
+    p[{4,4}] = new ParamedicCommander(2);
+    return p;
 }
+
+// int main(){
+//       WarGame::Board p = fillCommBoard();
+//     p.move(1,{2,2},WarGame::Board::Up);
+            
+//     p.move(1,{2,3},WarGame::Board::Down);
+            
+//     p.move(1,{4,3},WarGame::Board::Down);
+          
+//     p.move(2,{0,4},WarGame::Board::Up);
+
+//     p.move(2,{0,3},WarGame::Board::Left);
+
+//     p.move(2,{4,4},WarGame::Board::Down);
+// }
 

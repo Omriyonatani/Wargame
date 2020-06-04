@@ -24,7 +24,7 @@ class Paramedic:public Soldier{
                 board[i][j+1]->HP = board[i][j+1]->get_max_hp();
             }
 
-            if((j-1)>=board[0].size() && board[i][j-1]!= nullptr  && board[i][j-1]->get_player_number()==player_number){
+            if((j-1)>=0&&(j-1)<board[0].size() && board[i][j-1]!= nullptr  && board[i][j-1]->get_player_number()==player_number){
                 board[i][j-1]->HP= board[i][j-1]->get_max_hp();
             }
 
@@ -32,7 +32,7 @@ class Paramedic:public Soldier{
                 board[i+1][j]->HP= board[i+1][j]->get_max_hp();
             }
             
-            if((i-1)>=board.size() && board[i-1][j]!= nullptr && board[i-1][j]->get_player_number()==player_number){
+            if((i-1)>=0&&(i-1)<board.size() && board[i-1][j]!= nullptr && board[i-1][j]->get_player_number()==player_number){
                 board[i-1][j]->HP = board[i-1][j]->get_max_hp();
             }
 
@@ -40,15 +40,15 @@ class Paramedic:public Soldier{
                 board[i+1][j+1]->HP =  board[i+1][j+1]->get_max_hp();
             }
 
-            if(((i-1)>=board.size() && (j+1)<board[0].size() ) && board[i-1][j+1]!= nullptr  && board[i-1][j+1]->get_player_number()==player_number){
+            if(((i-1)>=0&&(i-1)<board.size() && (j+1)<board[0].size() ) && board[i-1][j+1]!= nullptr  && board[i-1][j+1]->get_player_number()==player_number){
                 board[i-1][j+1]->HP =  board[i-1][j+1]->get_max_hp();
             }
 
-            if(((i-1)>=board.size() && (j-1)>=board[0].size() ) && board[i-1][j-1]!= nullptr  && board[i-1][j-1]->get_player_number()==player_number){
+            if(((i-1)>=0&&(i-1)<board.size() && (j-1)>=0&&(j-1)<board[0].size() ) && board[i-1][j-1]!= nullptr  && board[i-1][j-1]->get_player_number()==player_number){
                 board[i-1][j-1]->HP =  board[i-1][j-1]->get_max_hp();
             }
 
-            if(((i+1)<board.size() && (j-1)>=board[0].size() ) && board[i+1][j-1]!= nullptr  && board[i+1][j-1]->get_player_number()==player_number){
+            if(((i+1)<board.size() && (j-1)>=0&&(j-1)<board[0].size() ) && board[i+1][j-1]!= nullptr  && board[i+1][j-1]->get_player_number()==player_number){
                 board[i+1][j-1]->HP = board[i+1][j-1]->get_max_hp();
             }
         }
