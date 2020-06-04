@@ -213,7 +213,7 @@ TEST_CASE("One soldier of this type"){
         //just to be Sure all is dead
 
         board.move(1,{1,2},WarGame::Board::MoveDIR::Down); //player2 soldier3 - 0, player2 soldier 6 - 20/10
-        board.move(1,{0,2},WarGame::Board::MoveDIR::Up); //player2 soldier3 - 0, player2 soldier 6 - 0
+        // board.move(1,{0,2},WarGame::Board::MoveDIR::Up); //player2 soldier3 - 0, player2 soldier 6 - 0
         board.move(1,{1,2},WarGame::Board::MoveDIR::Down); //player2 soldier3 - 0, player2 soldier 6 - 0
 
     //just to be Sure all is dead
@@ -275,7 +275,7 @@ TEST_CASE("2 VS 2"){
         board.move(1,{1,0},WarGame::Board::MoveDIR::Up);// player2 soldier1 - 0, player2 soldier2 - 0
     
     CHECK(board.has_soldiers(1));
-        board.move(1,{2,0},WarGame::Board::MoveDIR::Down); // i think youve done
+        // board.move(1,{2,0},WarGame::Board::MoveDIR::Down); // i think youve done
     CHECK(board.has_soldiers(1)); 
     CHECK(!board.has_soldiers(2)); 
 	//the winner is team 1

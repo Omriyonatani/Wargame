@@ -77,9 +77,11 @@ void Board:: move(uint player_number, std::pair<int,int> source, MoveDIR directi
     if(!has_soldiers(player_number)){
         return;
     }
-    if(!has_soldiers(fabs(player_number-1))){
+    if(player_number==1&&!has_soldiers(2)){
         return;
-
+    }
+    if(player_number==2&&!has_soldiers(1)){
+        return;
     }
     //the location is out of the board
     if(source.first>=Board::board.size() ||
@@ -138,42 +140,30 @@ void Board:: move(uint player_number, std::pair<int,int> source, MoveDIR directi
 }
 
 int main(){
-       WarGame::Board board(8,8);
-    board[{0,0}] = new FootSoldier(1);//player 1 soldier1
-    board[{0,1}] = new FootCommander(1);//player 1 soldier2
-    board[{0,2}] = new Sniper(1);//player 1 soldier3
-    board[{0,3}] = new SniperCommander(1);//player 1 soldier4
-    board[{0,4}] = new Paramedic(1);//player 1 soldier5
-    board[{0,5}] = new ParamedicCommander(1);//player 1 soldier6
-    board[{7,0}] = new FootSoldier(2);//player 2 soldier1
-    board[{7,1}] = new FootCommander(2);//player 2 soldier2
-    board[{7,2}] = new Sniper(2);//player 2 soldier3
-    board[{7,3}] = new SniperCommander(2);//player 2 soldier4
-    board[{7,4}] = new Paramedic(2);//player 2 soldier5
-    board[{7,5}] = new ParamedicCommander(2);//player 2 soldier6
+      WarGame::Board p = fillCommBoard();
+    p.move(1,{2,2},WarGame::Board::Up);
+            CHECK(p[{2,2}]==nullptr);
+            CHECK(typeid(*p[{3,2}])== typeid(FootCommander));
+
+    p.move(1,{2,3},WarGame::Board::Down);
+            CHECK(p[{2,3}]==nullptr);
+            CHECK(typeid(*p[{1,3}])==typeid(SniperCommander));
 
 
-	//consider using for.....
-    board.move(1,{0,0},WarGame::Board::MoveDIR::Up); //player2 soldier1 - 90
-    board.move(1,{0,1},WarGame::Board::MoveDIR::Up);//player2 soldier2 - 130, player 2 soldier1 - 80
-    board.move(1,{0,2},WarGame::Board::MoveDIR::Up);//player2 soldier6 - 150
-    board.move(1,{0,3},WarGame::Board::MoveDIR::Up);//player2 soldier6 - 50, player 2 soldier2 80 //need to define that commander shoots first
-    board.move(1,{0,4},WarGame::Board::MoveDIR::Up);//player1 soldier4 - 120 //need to define that curing id done after the step/move
-    board.move(1,{0,5},WarGame::Board::MoveDIR::Up); //player1 soldier5 - 100, player 1 soldier4 - 120, player 1 soldier6 - 200
-	
-	
-    //sniper 1 will kill them all
-    board.move(1,{1,3},WarGame::Board::MoveDIR::Down); //player2 soldier6 - 100, player 2 soldier2 80
-    board.move(1,{0,3},WarGame::Board::MoveDIR::Up); //player2 soldier4 - 20, player2 soldier3 - 50 //need to define to check the closes when there are equalh healh points
-    board.move(1,{1,3},WarGame::Board::MoveDIR::Down); //player2 soldier5 - 0, player2 soldier6 - 50
-    board.move(1,{0,3},WarGame::Board::MoveDIR::Up); //player2 soldier1 - 0, player2 soldier2 - 30
-        //just to be Sure all is dead
+    p.move(1,{4,3},WarGame::Board::Down);
+            CHECK(p[{4,3}]==nullptr);
+            CHECK(typeid(*p[{3,3}])==typeid(ParamedicCommander));
 
-        board.move(1,{1,2},WarGame::Board::MoveDIR::Down); //player2 soldier3 - 0, player2 soldier 6 - 20/10
-        board.move(1,{0,2},WarGame::Board::MoveDIR::Up); //player2 soldier3 - 0, player2 soldier 6 - 0
-        board.move(1,{1,2},WarGame::Board::MoveDIR::Down); //player2 soldier3 - 0, player2 soldier 6 - 0
 
-    //just to be Sure all is dead
-	
+    p.move(2,{0,4},WarGame::Board::Up);
+            CHECK(p[{0,4}]==nullptr);
+            CHECK(typeid(*p[{1,4}])== typeid(FootCommander));
+
+    p.move(2,{0,3},WarGame::Board::Left);
+            CHECK(p[{0,3}]==nullptr);
+            CHECK(typeid(*p[{0,2}])==typeid(SniperCommander));
+
+
+    p.move(2,{4,4},WarGame::Board::Down);
 }
 
